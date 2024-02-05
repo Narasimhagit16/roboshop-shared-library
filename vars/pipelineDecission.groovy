@@ -1,7 +1,7 @@
 #!groovy
 def decidePipeline(Map configMap){
-    application = configMap('application')
-    component = configMap('component')
+    application = configMap.get("application")
+    component = configMap.get("component")
     switch(application) {
         case 'nodejsVM':
              nodejsVM(configMap)
@@ -16,7 +16,7 @@ def decidePipeline(Map configMap){
              goVM(configMap)
              break
         default:
-             error('application is not recongized')
+             error "application is not recongized"
              break
     }
 
